@@ -1,6 +1,6 @@
 <template>
   <v-row>
-    <v-col v-for="n in 200" :key="n" cols="1">
+    <v-col v-for="n in 200" :key="n" cols="4" sm="3" md="2" lg="1">
       <v-card>
         <v-img
           :src="`https://picsum.photos/500/300?image=${n * 5 + 10}`"
@@ -9,11 +9,7 @@
           cover
         >
           <template v-slot:placeholder>
-            <v-row
-              class="fill-height ma-0"
-              align="center"
-              justify="center"
-            >
+            <v-row class="fill-height ma-0" align="center" justify="center">
               <v-progress-circular
                 indeterminate
                 color="grey-lighten-5"
