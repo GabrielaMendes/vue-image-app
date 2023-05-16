@@ -3,13 +3,15 @@ import TheSideBar from "@/components/TheSideBar.vue"
 import TheAppBar from "@/components/TheAppBar.vue"
 import ImageGallery from "@/components/ImageGallery.vue"
 import { useDisplay } from 'vuetify'
-import { ref } from "vue";
+import { ref, provide } from "vue";
 
 const isWithColor = ref(true);
 
 const onOptionSelected = (isColor) =>  {
   isWithColor.value = isColor;
 }
+
+provide('isWithColor', isWithColor)
 
 const { mdAndUp } = useDisplay()
 </script>
@@ -22,7 +24,7 @@ const { mdAndUp } = useDisplay()
     <TheAppBar v-else @option-selected="onOptionSelected" />
     <v-main>
       <!-- Cards -->
-      <ImageGallery :isWithColor="isWithColor" />
+      <ImageGallery />
     </v-main>
   </v-app>
 </template>
