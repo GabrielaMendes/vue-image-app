@@ -2,12 +2,17 @@
 const emits = defineEmits(["optionSelected"]);
 
 const selectOption = (isColor) => {
-  emits("optionSelected", isColor)
-}
+  emits("optionSelected", isColor);
+};
 </script>
 
 <template>
-  <v-navigation-drawer :width="280" expand-on-hover rail>
+  <v-navigation-drawer
+    style="transform: translateX(0%);"
+    :width="280"
+    expand-on-hover
+    rail
+  >
     <v-list>
       <v-list-item
         prepend-avatar="src/assets/profile-pic.png"
