@@ -5,6 +5,10 @@ const { isWithColor } = defineProps({
     type: String,
   },
 });
+
+const copyUrl = async (url) => {
+  await navigator.clipboard.writeText(url);
+};
 </script>
 
 <template>
@@ -12,7 +16,17 @@ const { isWithColor } = defineProps({
     <v-row>
       <v-col v-for="n in 200" :key="n" cols="4" sm="3" md="2" lg="1">
         <v-hover v-slot="{ isHovering, props }">
-          <v-card :elevation="isHovering ? 12 : 2" v-bind="props">
+          <v-card
+            :elevation="isHovering ? 12 : 2"
+            v-bind="props"
+            @click="
+              copyUrl(
+                `https://picsum.photos/500/300?image=${n * 5 + 10}${
+                  isWithColor ? '' : '&grayscale'
+                }`
+              )
+            "
+          >
             <v-img
               :src="`https://picsum.photos/500/300?image=${n * 5 + 10}${
                 isWithColor ? '' : '&grayscale'
