@@ -3,7 +3,12 @@
 </script>
 
 <template>
-  <div></div>
+  <v-app>
+    <!-- Sidebar -->
+    <v-main>
+      <!-- Cards -->
+    </v-main>
+  </v-app>
 </template>
 
 
