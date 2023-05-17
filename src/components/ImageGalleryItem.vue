@@ -1,7 +1,5 @@
 <script setup>
-import { computed } from "vue";
-import { ref } from "vue";
-import { inject } from "vue";
+import { ref, computed, inject} from "vue";
 
 const isWithColor = inject("isWithColor");
 
@@ -11,7 +9,7 @@ const failedImage = ref(false);
 const imgUrl = computed(() =>
   !failedImage.value
     ? `https://picsum.photos/500/300?image=${n * 5 + 10}${
-        isWithColor ? '' : '&grayscale'
+        isWithColor.value ? '' : '&grayscale'
       }`
     : "src/assets/notfound.png"
 );
