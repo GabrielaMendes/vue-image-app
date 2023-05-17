@@ -1,9 +1,13 @@
 <script setup>
+import { inject } from 'vue';
+
 const emits = defineEmits(["optionSelected"]);
 
 const selectOption = (isColor) => {
   emits("optionSelected", isColor);
 };
+
+const isWithColor = inject("isWithColor");
 </script>
 
 <template>
@@ -28,12 +32,14 @@ const selectOption = (isColor) => {
         prepend-icon="mdi-image"
         title="Color Gallery"
         value="color"
+        :elevation="isWithColor ? 1 : 0"
         @click="selectOption(true)"
       ></v-list-item>
       <v-list-item
         prepend-icon="mdi-dialpad"
         title="Grayspace Gallery"
         value="color"
+        :elevation="isWithColor ? 0 : 1"
         @click="selectOption(false)"
       ></v-list-item>
     </v-list>

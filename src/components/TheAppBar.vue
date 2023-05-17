@@ -1,9 +1,13 @@
 <script setup>
+import { inject } from 'vue';
+
 const emits = defineEmits(["optionSelected"]);
 
 const selectOption = (isColor) => {
   emits("optionSelected", isColor);
 };
+
+const isWithColor = inject("isWithColor");
 </script>
 
 <template>
@@ -18,7 +22,7 @@ const selectOption = (isColor) => {
 
     <v-spacer></v-spacer>
 
-    <v-btn icon>
+    <v-btn icon :elevation="isWithColor ? 1 : 0" class="mr-2">
       <v-icon
         color="grey-darken-1"
         @click.prevent="selectOption(true)"
@@ -27,7 +31,7 @@ const selectOption = (isColor) => {
       >
     </v-btn>
 
-    <v-btn icon>
+    <v-btn icon :elevation="isWithColor ? 0 : 1">
       <v-icon
         color="grey-darken-1"
         @click.prevent="selectOption(false)"
