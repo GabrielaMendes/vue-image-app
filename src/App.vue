@@ -13,7 +13,7 @@ const onOptionSelected = (isColor) =>  {
 
 provide('isWithColor', isWithColor)
 
-const { mdAndUp } = useDisplay()
+const { md, mdAndUp } = useDisplay()
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const { mdAndUp } = useDisplay()
     <TheSideBar v-if="mdAndUp" @option-selected="onOptionSelected" />
     <!-- AppBar -->
     <TheAppBar v-else @option-selected="onOptionSelected" />
-    <v-main>
+    <v-main :style="`margin-left: ${md ? '56px' : '0px'}`">
       <!-- Cards -->
       <ImageGallery />
     </v-main>
