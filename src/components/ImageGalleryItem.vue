@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, inject} from "vue";
+import { ref, computed, inject } from "vue";
 
 const isWithColor = inject("isWithColor");
 
@@ -9,13 +9,16 @@ const failedImage = ref(false);
 const imgUrl = computed(() =>
   !failedImage.value
     ? `https://picsum.photos/500/300?image=${n * 5 + 10}${
-        isWithColor.value ? '' : '&grayscale'
+        isWithColor.value ? "" : "&grayscale"
       }`
     : "src/assets/notfound.png"
 );
 
+const emit = defineEmits(["copiedSuccess"]);
 const copyUrl = async (url) => {
   await navigator.clipboard.writeText(url);
+
+  emit("copiedSuccess");
 };
 </script>
 

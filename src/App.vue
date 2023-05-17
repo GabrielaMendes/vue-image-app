@@ -23,6 +23,8 @@ const { md, mdAndUp } = useDisplay()
     <!-- AppBar -->
     <TheAppBar v-else @option-selected="onOptionSelected" />
     <v-main :style="`margin-left: ${md ? '56px' : '0px'}`">
+      <!-- Alert teleport div -->
+      <div id="alert"></div>      
       <!-- Cards -->
       <ImageGallery />
     </v-main>
