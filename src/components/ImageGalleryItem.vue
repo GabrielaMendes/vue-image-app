@@ -22,6 +22,7 @@ const copyUrl = async (url) => {
 <template>
   <v-hover v-slot="{ isHovering, props }">
     <v-card
+      :style="failedImage ? 'pointer-events: none' : ''"
       :elevation="isHovering ? 12 : 2"
       v-bind="props"
       @click="
