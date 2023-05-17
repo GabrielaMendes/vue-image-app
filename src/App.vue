@@ -34,7 +34,6 @@ const { md, mdAndUp } = useDisplay();
 
 <style>
 #alert {
-  background-color: rgba(255, 255, 255, 0.95);
   position: fixed;
   width: 100%;
   z-index: 999;

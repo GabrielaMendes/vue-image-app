@@ -34,13 +34,28 @@ onMounted(() => {
 
   <!-- Coppied Alert -->
   <teleport :to="target" :disabled="!target || disabled">
-    <v-alert
-      v-model="showAlert"
-      closable
-      @click:close="showAlert = false"
-      text="Url copied to clipboard!"
-      type="success"
-      variant="tonal"
-    ></v-alert>
+    <transition name="slide">
+      <v-alert
+        v-model="showAlert"
+        closable
+        @click:close="showAlert = false"
+        text="Url copied to clipboard!"
+        type="success"
+        variant="tonal"
+        style="background-color: rgba(255, 255, 255, 0.95)"
+      ></v-alert>
+    </transition>
   </teleport>
 </template>
+
+<style scoped>
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateY(-100%);
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 400ms ease-out;
+}
+</style>
