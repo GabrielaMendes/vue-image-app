@@ -1,26 +1,26 @@
 <script setup>
-import { onMounted } from 'vue';
-import ImageGalleryItem from './ImageGalleryItem.vue';
-import { ref } from 'vue';
+import { onMounted } from "vue";
+import ImageGalleryItem from "./ImageGalleryItem.vue";
+import { ref } from "vue";
 
 const showAlert = ref(false);
 
-let timer = null
+let timer = null;
 const onCopiedSuccess = () => {
-  clearTimeout(timer)
+  clearTimeout(timer);
   showAlert.value = true;
-  
+
   timer = setTimeout(() => {
     showAlert.value = false;
-  }, 5000)
-}
+  }, 5000);
+};
 
-const target = ref(null)
-const disabled = ref(false)
+const target = ref(null);
+const disabled = ref(false);
 
 onMounted(() => {
-  target.value = "#alert"
-}) 
+  target.value = "#alert";
+});
 </script>
 
 <template>
