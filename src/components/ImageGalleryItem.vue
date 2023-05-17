@@ -1,9 +1,20 @@
 <script setup>
-import { inject } from 'vue';
+import { computed } from "vue";
+import { ref } from "vue";
+import { inject } from "vue";
 
-const isWithColor = inject("isWithColor")
+const isWithColor = inject("isWithColor");
 
-const { n } = defineProps(['n']);
+const { n } = defineProps(["n"]);
+
+const failedImage = ref(false);
+const imgUrl = computed(() =>
+  !failedImage.value
+    ? `https://picsum.photos/500/300?image=${n * 5 + 10}${
+        isWithColor ? '' : '&grayscale'
+      }`
+    : "src/assets/notfound.png"
+);
 
 const copyUrl = async (url) => {
   await navigator.clipboard.writeText(url);
@@ -24,13 +35,11 @@ const copyUrl = async (url) => {
       "
     >
       <v-img
-        :src="`https://picsum.photos/500/300?image=${n * 5 + 10}${
-          isWithColor ? '' : '&grayscale'
-        }`"
+        :src="imgUrl"
         :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}${
           isWithColor ? '' : '&grayscale'
         }`"
-        v-on:error="console.log('error')"
+        v-on:error="failedImage = true"
         aspect-ratio="1"
         cover
       >
